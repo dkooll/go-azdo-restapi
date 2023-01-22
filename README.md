@@ -6,9 +6,6 @@ The program uses structs and json package to map the json response to struct fie
 
 The program also uses the os package to get the env variable "AZURE_TOKEN" which is used as an Authorization header in the requests.
 
-## Overview
-### Function Flow
-
 ## Details
 
 The program starts by importing several Go packages that are used throughout the code, including "net/http" for making HTTP requests and "encoding/json" for working with JSON data. The program also defines some constants, such as the pool name and organization name, which are used in the API requests.
