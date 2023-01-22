@@ -30,3 +30,9 @@ In the main function, the program creates a new struct of Pools with the specifi
 In summary, this code uses the Azure DevOps REST API to check if an agent pool already exists and if it doesn't it creates a new agent pool with the specified properties. The program uses several Go packages such as json, http and os, to interact with the API, process JSON responses and access environment variables.
 
 ## Concepts Learned
+
+- Using linked structs
+- Making GET and POST requests to the azure devops api
+- Using the json package to marshal structs into json and unmarshal json response into structs
+- Accessing environment variables using the os package
+- Process function inputs and return values
