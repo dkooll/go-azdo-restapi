@@ -3,7 +3,7 @@
 # Table of Contents
 1. [Description](#description)
 2. [Overview](#overview)
-    2. [Function Flow](#function-flow)
+    1. [Function Flow](#function-flow)
 3. [Details](#details)
 4. [Notes](#Notes)
 5. [Concepts Learned](#concepts-learned)
