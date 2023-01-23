@@ -6,6 +6,13 @@ The program uses structs and json package to map the json response to struct fie
 
 The program also uses the os package to get the env variable "AZURE_TOKEN" which is used as an Authorization header in the requests.
 
+# Table of Contents
+1. [Overview](#overview)
+    1. [Function Flow](#function-flow)
+2. [Details](#details)
+3. [Notes](#Notes)
+4. [Concepts Learned](#concepts-learned)
+
 ## Overview
 ### Function Flow
 
