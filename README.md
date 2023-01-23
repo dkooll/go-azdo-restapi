@@ -1,4 +1,6 @@
-This is a mini project that demonstrates the use of Go programming language to interact with the Azure DevOps API. The purpose of this project is to learn and understand some basic Go concepts.
+This is a mini project that demonstrates the use of Go programming language to interact with the Azure DevOps API.
+
+The purpose of this project is to learn and understand some basic Go concepts.
 
 ## Index
 * [Description](#description)
