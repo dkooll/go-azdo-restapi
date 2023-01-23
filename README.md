@@ -7,11 +7,21 @@ The program uses structs and json package to map the json response to struct fie
 The program also uses the os package to get the env variable "AZURE_TOKEN" which is used as an Authorization header in the requests.
 
 # Index
-1. [Overview](#overview)
+1. [Prerequisites](#prerequisites)
+2. [Overview](#overview)
     1. [Function Flow](#function-flow)
-2. [Details](#details)
-3. [Notes](#Notes)
-4. [Concepts Learned](#concepts-learned)
+3. [Details](#details)
+4. [Notes](#Notes)
+5. [Concepts Learned](#concepts-learned)
+
+## Prerequisites
+Before running this code, you will need to have the following:
+
+- A Microsoft Azure DevOps account
+- A Personal Access Token (PAT) with the "Agent Pools (read and manage)" scope, to authenticate with the Azure DevOps API.
+- Go programming language installed on your computer
+- Basic knowledge of Go programming, including how to import packages, define structs and functions, and handle errors.
+You will also need to set an environment variable named "AZURE_TOKEN" with your PAT as its value. This will be used as the Authorization header in the requests to the Azure DevOps API.
 
 ## Overview
 ### Function Flow
