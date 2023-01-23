@@ -34,7 +34,9 @@ In summary, this code uses the Azure DevOps REST API to check if an agent pool a
 ## Notes
 
 - This code is provided as-is, and is intended for educational purposes only. It is not production-ready and may not be suitable for your specific use case.
+
 - The Azure DevOps API has a rate limit of 30 requests per minute. If you exceed this limit, your requests will be blocked for a period of time.
+
 - The Azure DevOps API is versioned, please make sure to use the correct API version for your organization.
 - The API endpoint and payload for creating a agent pool might change with different API version.
 - The code in this repository uses the basic authentication method, it's recommended to use the OAuth authentication method for production use.
