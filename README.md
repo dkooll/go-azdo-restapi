@@ -9,7 +9,7 @@ The program also uses the os package to get the env variable "AZURE_TOKEN" which
 ## Overview
 ### Function Flow
 
-![Rest Api](/images/restapi.png "rest api")
+![Rest Api](/images/rest-api.png "rest api")
 
 ## Details
 
