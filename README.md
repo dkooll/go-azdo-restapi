@@ -20,8 +20,8 @@ Before running this code, you will need to have the following:
 - A Microsoft Azure DevOps account
 - A Personal Access Token (PAT) with the "Agent Pools (read and manage)" scope, to authenticate with the Azure DevOps API.
 - Go programming language installed on your computer
-- Basic knowledge of Go programming, including how to import packages, define structs and functions, and handle errors.
-You will also need to set an environment variable named "AZURE_TOKEN" with your PAT as its value. This will be used as the Authorization header in the requests to the Azure DevOps API.
+- Basic knowledge of Go programming
+- Set an environment variable named "AZURE_TOKEN" with your PAT as its value.
 
 ## Overview
 ### Function Flow
