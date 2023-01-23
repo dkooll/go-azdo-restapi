@@ -4,14 +4,14 @@ import (
 	"bytes"
 	"encoding/json"
 	"fmt"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"os"
 )
 
 const (
-	poolName = "Selfhosted2"
-	orgName  = "cloudnation-nl"
+	poolName = "Selfhosted"
+	orgName  = "cloudnation"
 )
 
 type Response struct {
@@ -42,7 +42,7 @@ func checkAgentPoolExists(poolName string) (bool, error) {
 
 	defer resp.Body.Close()
 
-	body, err := ioutil.ReadAll(resp.Body)
+	body, err := io.ReadAll(resp.Body)
 	if err != nil {
 		return false, err
 	}
