@@ -10,9 +10,11 @@ import (
 )
 
 const (
-	poolName = "Selfhosted"
-	orgName  = "cloudnation"
+	poolName = "Selfhosted2"
+	orgName  = "cloudnation-nl"
 )
+
+var client = &http.Client{}
 
 type Response struct {
 	Count int     `json:"count"`
@@ -34,7 +36,6 @@ func checkAgentPoolExists(poolName string) (bool, error) {
 	req.Header.Add("Authorization", "Basic "+os.Getenv("AZURE_TOKEN"))
 	req.Header.Add("Content-Type", "application/json")
 
-	client := &http.Client{}
 	resp, err := client.Do(req)
 	if err != nil {
 		return false, err
@@ -69,7 +70,6 @@ func createAgentPool(poolname Pools) error {
 		return fmt.Errorf("pool %s already exists", poolName)
 	}
 
-	client := &http.Client{}
 	poolBytes, err := json.Marshal(poolname)
 	if err != nil {
 		return err
