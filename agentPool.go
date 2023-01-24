@@ -10,8 +10,9 @@ import (
 )
 
 const (
-	poolName = "Selfhosted2"
-	orgName  = "cloudnation-nl"
+	poolName   = "Selfhosted2"
+	orgName    = "cloudnation-nl"
+	apiVersion = "7.0"
 )
 
 var client = &http.Client{}
@@ -28,7 +29,7 @@ type Pools struct {
 }
 
 func checkAgentPoolExists(poolName string) (bool, error) {
-	req, err := http.NewRequest("GET", "https://dev.azure.com/"+orgName+"/_apis/distributedtask/pools?api-version=7.0", nil)
+	req, err := http.NewRequest("GET", "https://dev.azure.com/"+orgName+"/_apis/distributedtask/pools?api-version="+apiVersion, nil)
 	if err != nil {
 		return false, err
 	}
@@ -75,7 +76,7 @@ func createAgentPool(poolname Pools) error {
 		return err
 	}
 
-	req, err := http.NewRequest("POST", "https://dev.azure.com/"+orgName+"/_apis/distributedtask/pools?api-version=7.0", bytes.NewBuffer(poolBytes))
+	req, err := http.NewRequest("POST", "https://dev.azure.com/"+orgName+"/_apis/distributedtask/pools?api-version="+apiVersion, bytes.NewBuffer(poolBytes))
 	if err != nil {
 		return err
 	}
