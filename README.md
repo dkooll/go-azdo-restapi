@@ -13,7 +13,7 @@ This is a mini project that demonstrates the use of Go programming language to i
 ## Description
 This code creates an agent pool in Azure DevOps. It first checks if it already exists by sending a GET request to the Azure DevOps API, then it will send a POST request to create the pool if it does not exist.
 
-The program uses structs and json package to map the json response to struct fields. It also uses HTTP package to make the GET and POST requests to the API. The program defines some constants, such as the pool name and organization name, which are used in the API requests.
+The program uses structs and the json package to map the response to struct fields. It also uses the HTTP package to make the GET and POST requests to the API. The program defines some constants, such as the pool name and organization name, which are used in the API requests.
 
 ## Prerequisites
 Before running this code, you will need to have the following:
@@ -31,7 +31,7 @@ Before running this code, you will need to have the following:
 
 ## Details
 
-The program starts by importing several Go packages that are used throughout the code, including "net/http" for making HTTP requests and "encoding/json" for working with JSON data. The program also defines some constants, such as the pool name and organization name, which are used in the API requests.
+The program starts by importing several Go packages that are used throughout the code, including `net/http` for making HTTP requests and `encoding/json` for working with JSON data. The program also defines some constants, such as the pool name and organization name, which are used in the API requests.
 
 The program defines two structs: "Response" and "Pools". These structs are used to unmarshal the response body from the API when querying the list of pools. The structs are defined with json tags which allow the json package to map the json response to struct fields.
 
