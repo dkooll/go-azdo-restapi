@@ -7,6 +7,8 @@ This is a mini project that demonstrates the use of Go programming language to i
 * [Overview](#overview)
     * [Function Flow](#function-flow)
 * [Details](#details)
+    * [Functions](#functions)
+    * [Testing](#testing)
 * [Notes](#Notes)
 * [Concepts Learned](#concepts-learned)
 
@@ -30,6 +32,7 @@ Before running this code, you will need to have the following:
 ![Rest Api](/images/rest-api.png "rest api")
 
 ## Details
+### Functions
 
 The program starts by importing several Go packages that are used throughout the code, including `net/http` for making HTTP requests and `encoding/json` for working with JSON data. The program also defines some constants, such as the pool name and organization name, which are used in the API requests.
 
@@ -44,6 +47,12 @@ The function [createAgentPool](https://github.com/dkooll/go-azdo-restapi/blob/09
 It creates a new http.Request with the POST method, the url of the API and the bytes buffer of the marshaled pool struct. The headers for the request are set as the previous function, including the "Authorization" header. Then the function uses the client to execute the POST request. The response status code is checked, if it's not OK, the function returns an error message with the status.
 
 In the main function, the program creates a new struct of Pools with the specified pool name, AutoProvision set to true and IsHosted set to false, then it calls the createAgentPool function. If the function returns an error, the program will print the error message, otherwise it will print a message that the pool has been created.
+
+### Testing
+
+The first function, [TestCreateAgentPoolSuccess](https://github.com/dkooll/go-azdo-restapi/blob/07af1300b6929ae3160640f9e1558861c0f818cf/agentpool_test.go#L9) is using a mock server. The httptest package is used to create a test server and the http.HandlerFunc function is used to handle the requests made to the server. The test server checks the request method and returns a response accordingly, with a status code of 200 OK for a POST request and 409 Conflict for a GET request. The global variable "client" is overridden with the test server's client so that the createAgentPool function makes its request to the test server instead of a real server. The test checks that the createAgentPool function returns an error with the message "error: 409 Conflict" and fails if it does not.
+
+The [TestCreateAgentPoolInvalidInput](https://github.com/dkooll/go-azdo-restapi/blob/07af1300b6929ae3160640f9e1558861c0f818cf/agentpool_test.go#L39) test case verifies that the createAgentPool function properly handles invalid input. It creates a Pools struct with an empty pool name and calls the createAgentPool function with it. The test case asserts that an error is returned and that the error message is the expected message "error: Invalid input: pool name cannot be empty".
 
 ## Notes
 
