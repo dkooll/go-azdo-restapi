@@ -50,9 +50,13 @@ In the main function, the program creates a new struct of Pools with the specifi
 
 ### Testing
 
-The first function, [TestCreateAgentPoolSuccess](https://github.com/dkooll/go-azdo-restapi/blob/07af1300b6929ae3160640f9e1558861c0f818cf/agentpool_test.go#L9) is using a mock server. The httptest package is used to create a test server and the http.HandlerFunc function is used to handle the requests made to the server. The test server checks the request method and returns a response accordingly, with a status code of 200 OK for a POST request and 409 Conflict for a GET request. The global variable "client" is overridden with the test server's client so that the createAgentPool function makes its request to the test server instead of a real server. The test checks that the createAgentPool function returns an error with the message "error: 409 Conflict" and fails if it does not.
+The first function, [TestCreateAgentPoolSuccess](https://github.com/dkooll/go-azdo-restapi/blob/07af1300b6929ae3160640f9e1558861c0f818cf/agentpool_test.go#L9) is using a mock server. The httptest package is used to create a test server and the http.HandlerFunc function is used to handle the requests made to the server. The test server checks the request method and returns a response accordingly, with a status code of 200 OK for a POST request and 409 Conflict for a GET request.
 
-The [TestCreateAgentPoolInvalidInput](https://github.com/dkooll/go-azdo-restapi/blob/07af1300b6929ae3160640f9e1558861c0f818cf/agentpool_test.go#L39) test case verifies that the createAgentPool function properly handles invalid input. It creates a Pools struct with an empty pool name and calls the createAgentPool function with it. The test case asserts that an error is returned and that the error message is the expected message "error: Invalid input: pool name cannot be empty".
+The global variable "client" is overridden with the test server's client so that the createAgentPool function makes its request to the test server instead of a real server. The test checks that the createAgentPool function returns an error with the message "error: 409 Conflict" and fails if it does not.
+
+The [TestCreateAgentPoolInvalidInput](https://github.com/dkooll/go-azdo-restapi/blob/07af1300b6929ae3160640f9e1558861c0f818cf/agentpool_test.go#L39) test case verifies that the createAgentPool function properly handles invalid input. It creates a Pools struct with an empty pool name and calls the createAgentPool function with it.
+
+The test case asserts that an error is returned and that the error message is the expected message "error: Invalid input: pool name cannot be empty".
 
 ## Notes
 
