@@ -62,13 +62,8 @@ func checkAgentPoolExists(poolName string) (bool, error) {
 }
 
 func createAgentPool(poolname Pools) error {
-	exists, err := checkAgentPoolExists(poolName)
-	if err != nil {
-		return err
-	}
-
-	if exists {
-		return fmt.Errorf("pool %s already exists", poolName)
+	if poolname.Name == "" {
+		return fmt.Errorf("error: Invalid input: pool name cannot be empty")
 	}
 
 	poolBytes, err := json.Marshal(poolname)
@@ -90,7 +85,7 @@ func createAgentPool(poolname Pools) error {
 	}
 
 	if resp.StatusCode != http.StatusOK {
-		return fmt.Errorf("error: %s", resp.Status)
+		return fmt.Errorf("error: %d %s", resp.StatusCode, http.StatusText(resp.StatusCode))
 	}
 
 	defer resp.Body.Close()
@@ -104,11 +99,21 @@ func main() {
 		IsHosted:      false,
 	}
 
-	err := createAgentPool(pool)
+	exists, err := checkAgentPoolExists(poolName)
 	if err != nil {
-		fmt.Println(err)
 		return
 	}
 
-	fmt.Printf("Pool %s created\n", poolName)
+	if exists {
+		fmt.Printf("pool %s already exists\n", poolName)
+		return
+	} else {
+		createAgentPool(pool)
+		fmt.Printf("Pool %s created\n", poolName)
+
+		if err != nil {
+			fmt.Println(err)
+			return
+		}
+	}
 }
