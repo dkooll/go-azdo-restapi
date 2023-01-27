@@ -37,7 +37,6 @@ func TestCreateAgentPoolSuccess(t *testing.T) {
 }
 
 func TestCreateAgentPoolInvalidInput(t *testing.T) {
-	// create an invalid agent pool with an empty name
 	pool := Pools{
 		Name:          "",
 		AutoProvision: true,
@@ -49,7 +48,6 @@ func TestCreateAgentPoolInvalidInput(t *testing.T) {
 		t.Errorf("Expected error for invalid input, got nil")
 	}
 
-	// check that the error message is as expected
 	expectedError := "error: Invalid input: pool name cannot be empty"
 	if err.Error() != expectedError {
 		t.Errorf("Expected error message '%s', got '%s'", expectedError, err.Error())

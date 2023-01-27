@@ -10,7 +10,7 @@ import (
 )
 
 const (
-	poolName   = "Selfhosted2"
+	poolName   = "Selfhosted"
 	orgName    = "cloudnation-nl"
 	apiVersion = "7.0"
 )
