@@ -10,7 +10,7 @@ import (
 )
 
 const (
-	poolName   = "Selfhosted"
+	poolName   = "Selfhosted2"
 	orgName    = "cloudnation-nl"
 	apiVersion = "7.0"
 )
@@ -86,10 +86,10 @@ func createAgentPool(poolname Pools) error {
 
 	if resp.StatusCode != http.StatusOK {
 		return fmt.Errorf("error: %d %s", resp.StatusCode, http.StatusText(resp.StatusCode))
+	} else {
+		defer resp.Body.Close()
+		return nil
 	}
-
-	defer resp.Body.Close()
-	return nil
 }
 
 func main() {

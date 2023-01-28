@@ -1,10 +1,41 @@
 package main
 
 import (
+	"bytes"
+	"encoding/json"
 	"net/http"
 	"net/http/httptest"
+	"os"
 	"testing"
 )
+
+func TestCreateAgentPoolBadRequest(t *testing.T) {
+	// create a mock server that returns a non-200 status code
+	mockServer := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		w.WriteHeader(http.StatusBadRequest)
+	}))
+	defer mockServer.Close()
+
+	poolname := Pools{Name: "Selfhosted"}
+	poolBytes, err := json.Marshal(poolname)
+	if err != nil {
+		t.Error(err)
+	}
+
+	req, err := http.NewRequest("POST", mockServer.URL, bytes.NewBuffer(poolBytes))
+	if err != nil {
+		t.Error(err)
+	}
+
+	req.Header.Add("Authorization", "Basic "+os.Getenv("AZURE_TOKEN"))
+	req.Header.Add("Content-Type", "application/json")
+
+	err = createAgentPool(poolname)
+
+	if err == nil {
+		t.Error("Expected error, got nil")
+	}
+}
 
 func TestCreateAgentPoolSuccess(t *testing.T) {
 	ts := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
